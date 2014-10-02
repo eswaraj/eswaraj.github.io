@@ -1,0 +1,184 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>e-Swaraj - User Profile</title>
+	<!-- css starts -->
+	<link rel="stylesheet" href="css/bootstrap.css">
+	<link rel="stylesheet" href="css/bootstrap-theme.css">
+	<link rel="stylesheet" href="css/dashboard.css">
+	<link rel="stylesheet" href="css/jquery.selectBoxIt.css">
+	<link rel="stylesheet" href="css/jquery.mobile-1.2.0.min.css">
+	<link rel="stylesheet" href="css/bootstrap-tagsinput.css">
+	<link rel="stylesheet" href="css/mla_statistics_feed.css" />
+
+	<link rel="stylesheet" href="css/jquery.tocify.css">
+	<link href='http://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="css/fonts-icomoon.css">
+	<link rel="stylesheet" href="css/nv.d3.css" type="text/css"></link>
+
+	<!-- css ends -->
+	<script src="js/jquery-2.1.0.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/jquery-ui.min.js"></script>
+	<script src="js/jquery.selectBoxIt.min.js"></script>
+	<script src="js/bootstrap-tagsinput.js"></script>
+
+	<script src="js/jquery.tocify.min.js"></script>
+	<script src="js/jquery-1.10.2.js"></script><!-- Jquery -->
+	<script src="js/d3.min.js"></script>
+	<script src="js/nv.d3.min.js"></script>
+	<script src="js/dynamic_nvd3.js"></script>	
+	
+		<!-- Social Media Share button js script for fb, to be moved to existing js file if needed -->
+		<script>function fbShare(url, title, descr, image, winWidth, winHeight) {var winTop = (screen.height / 2) - (winHeight / 2);var winLeft = (screen.width / 2) - (winWidth / 2);window.open('http://www.facebook.com/sharer.php?s=100&p[title]=' + title + '&p[summary]=' + descr + '&p[url]=' + url + '&p[images][0]=' + image, 'sharer', 'top=' + winTop + ',left=' + winLeft + ',toolbar=0,status=0,width=' + winWidth + ',height=' + winHeight);}</script>
+	
+</head>
+<body>
+<div class="outerwrapper">
+<div class="navbar navbar-fixed-top navbar-inverse" role="navigation">
+	<div class="container-fluid">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand" href="index.php">
+				<img src="images/eswaraj-dashboard-logo.png" class="pull-left" alt="">
+				<span pull-left="">e-Swaraj</span>
+			</a>
+		</div>
+		<div class="collapse navbar-collapse">
+			<ul class="nav navbar-nav">
+				<li>
+					<a href="05-constituency.php">My Constituency</a>
+				</li>
+				<li>
+					<a href="07-my-mla.php">My MLA</a>
+				</li>
+				<li>
+					<a href="home.php">Page</a>
+				</li>
+			</ul>
+			<ul class="nav navbar-nav navbar-right">
+				<li class="active">
+					<a href="10-profile-pending.php"> <i class="glyphicon glyphicon-user"></i>
+					</a>
+				</li>
+			</ul>
+		</div>
+		<!-- /.nav-collapse -->
+	</div>
+</div>
+<!-- /.navbar -->
+		<div class="statistics-wrapper">
+					<div id="complaints_box" class="top_statistics_box">
+							<p class="font-medium-size">Complaints Statistics</p>
+							<div id="total_complaints_box" class="col-sm-6 statistics_div">
+							<p class="font-small-size">Total Complaints</p>
+							<p class="font-big-size">3000</p>
+							</div>
+							<div id="since_yesterday_complaints_box" class="col-sm-6 statistics_div">
+							<p class="font-small-size">Since Yesterday</p>
+							<p class="font-big-size font-left-border">250</p>
+							</div>
+					</div>
+
+					<div id="colonies_affected" class="top_statistics_box">
+							<p class="font-medium-size">Colonies affected</p>
+							<div id="total_affected_colonies" class="col-sm-6 statistics_div">
+							<p class="font-small-size">Total Colonies affected</p>
+							<p class="font-big-size">30</p>
+							</div>
+							<div id="since_yesterday_affected_colonies" class="col-sm-6 statistics_div">
+							<p class="font-small-size">Since Yesterday</p>
+							<p class="font-big-size font-left-border">5</p>
+							</div>
+					</div>							
+
+					<div id="most_reported_issues" class="top_statistics_box-2">
+							<p class="font-medium-size">Most Reported Issues</p>
+							<div id="high_alert_1" class="col-sm-6 statistics_div">
+							<p class="font-medium-size-2">Water</p>
+							<p class="font-small-size">No water since 2 days<br />Doddenakundi</p>
+							</div>
+							<div id="high_alert_2" class="col-sm-6 statistics_div">
+							<p class="font-medium-size-2">Roads</p>
+							<p class="font-small-size font-left-border">Potholes on Road<br />Kadubeesanahalli</p>
+							</div>
+					</div>
+		</div>
+
+		<div class="container-fluid">
+		<div class="banner" style="float: left;">
+		<div class="locate-on-map">
+			<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+			<div style="overflow:hidden;height:100%;width:100%;">
+				<div id="gmap_canvas" style="height:100%;width:100%;"></div>
+			</div>
+			<script type="text/javascript"> function init_map(){var myOptions = {zoom:14,center:new google.maps.LatLng(19.0344647,73.01100959999997),mapTypeId: google.maps.MapTypeId.ROADMAP};map = new google.maps.Map(document.getElementById("gmap_canvas"), myOptions);marker = new google.maps.Marker({map: map,position: new google.maps.LatLng(19.0344647, 73.01100959999997)});infowindow = new google.maps.InfoWindow({content:"<b></b><br/><br/>400706 " });google.maps.event.addListener(marker, "click", function(){infowindow.open(map,marker);});}google.maps.event.addDomListener(window, 'load', init_map);</script>
+		</div>
+		<div class="row">
+			<div class="col-sm-8"></div>
+			<div class="col-sm-4">
+				<div class="banner-widget">
+				</div>
+			</div>
+			</div>
+	</div>
+
+		<div class="col-sm-2" style="float: left;">
+			<p>
+				<strong>Sort Issues by category</strong>
+			</p>
+			<div class="list-group">
+				<a href="#" class="list-group-item active">Show All</a>
+				<a href="#" class="list-group-item">Water</a>
+				<a href="#" class="list-group-item">Electricity</a>
+				<a href="#" class="list-group-item">Sewage &amp; Sanitation</a>
+				<a href="#" class="list-group-item">Law &amp; Order</a>
+				<a href="#" class="list-group-item">Roads</a>
+				<a href="#" class="list-group-item">Transportation</a>
+			</div>
+			
+			<a id="save_btn" class="btn btn-primary blue btn_round" href="#"><span class="glyphicon glyphicon-new-window"></span> My Constitency</a>
+			<a id="save_btn" class="btn btn-primary blue btn_round" href="#"><span class="glyphicon glyphicon-new-window"></span> My Public Profile</a>
+</div>
+	
+
+			<div class="row" style="float: left;"><p class="font-medium-size-3"><strong>Analytics</strong></p>
+
+			<div class="listing-wrapper">
+				<div class="secondary-wrapper">
+					<div id="chart_bar_c" style="float: left;">
+						<svg>
+						</svg>
+					</div>
+
+					<div id="chart_pie_c" style="float: left;">
+						<svg>
+						</svg>
+					</div>
+
+					<div id="chart_ts">
+						<svg>
+						</svg>
+					</div>							
+		</div>
+	</div>
+</div>
+
+</div>
+<footer>
+	&copy;
+	<a href="#">www.eswaraj.com</a>
+	<span class="sep">|</span>
+	<a href="#">Privacy policy</a>
+</footer>
+</body>
+</html>
